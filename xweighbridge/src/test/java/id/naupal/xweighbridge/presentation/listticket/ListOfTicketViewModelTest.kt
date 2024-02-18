@@ -60,4 +60,20 @@ class ListOfTicketViewModelTest {
             TestCase.assertEquals(UiState.Success.GetTickets(dummyTicket), captor.value)
         }
     }
+
+    @Test
+    fun `when get ticket return error data, getTickets should be return error value`() {
+        coEvery { getTicketsUseCase.invoke(any(), any())} coAnswers {
+            UiState.Error(error = "error!!")
+        }
+
+        viewModel.getTickets("", TicketFiler())
+
+        val captor = ArgumentCaptor.forClass(UiState::class.java)
+
+        captor.run {
+            Mockito.verify(getTicketsStateObserver, Mockito.times(2)).onChanged(capture())
+            TestCase.assertEquals(UiState.Error(error = "error!!"), captor.value)
+        }
+    }
 }
