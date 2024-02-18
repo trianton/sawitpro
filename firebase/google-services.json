@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "674674190148",
+    "project_id": "sawitpro-f3031",
+    "storage_bucket": "sawitpro-f3031.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674674190148:android:4dfd2e2a6783c2f781d911",
+        "android_client_info": {
+          "package_name": "id.naupal.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG1p0Lh1MGlt6b3TrXD4es143v08hLAKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674674190148:android:4cc4309d64aa583481d911",
+        "android_client_info": {
+          "package_name": "id.naupal.sawitpro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG1p0Lh1MGlt6b3TrXD4es143v08hLAKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
