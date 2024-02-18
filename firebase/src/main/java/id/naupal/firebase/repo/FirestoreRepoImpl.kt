@@ -99,8 +99,8 @@ class FirestoreRepoImpl : FirestoreRepo {
                         licenceNumber = doc.getString(licenceNumberField) ?: "",
                         driverName = doc.getString(driverNameField) ?: "",
                         inboundWeight = doc.getLong(inboundWeightField) ?: 0,
-                        outboundWeight = doc.getLong(inboundWeightField) ?: 0,
-                        netWeight = doc.getLong(inboundWeightField) ?: 0
+                        outboundWeight = doc.getLong(outboundWeightField) ?: 0,
+                        netWeight = doc.getLong(netWeightField) ?: 0
                     )
                 }
                 continuation.resume(ResultFbState.Success.GetTickets(tickets))
