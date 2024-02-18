@@ -81,6 +81,9 @@ class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTic
                     netWeight = etNetWeight.text.toString().toLong()
                 )
                 inputTicketViewModel.insertTicket(tmpTicket)
+                //data will save offline first
+                setResult(RESULT_OK)
+                finish()
             }
 
             etDateTime.setOnClickListener {
@@ -147,8 +150,6 @@ class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTic
 
             is UiState.Success.InputTicket -> {
                 Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-                setResult(RESULT_OK)
-                finish()
             }
 
             else -> {

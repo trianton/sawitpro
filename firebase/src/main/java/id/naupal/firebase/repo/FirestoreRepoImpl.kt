@@ -45,11 +45,9 @@ class FirestoreRepoImpl : FirestoreRepo {
 
     override suspend fun insertTicket(ticket: TicketDto): ResultFbState =
         suspendCoroutine { continuation ->
-
             val db = Firebase.firestore
-            val batch = db.batch()
 
-            val dataStock = hashMapOf(
+            val dataTicket = hashMapOf(
                 idField to ticket.id,
                 dateTimeField to ticket.dateTime,
                 licenceNumberField to ticket.licenceNumber,
@@ -58,16 +56,13 @@ class FirestoreRepoImpl : FirestoreRepo {
                 outboundWeightField to ticket.outboundWeight,
                 netWeightField to ticket.netWeight
             )
-            val refStock = db.collection(ticketColl).document(ticket.id)
-
-            batch.set(refStock, dataStock)
-
-
-            batch.commit().addOnSuccessListener {
-                continuation.resume(ResultFbState.Success.InsertTicket(ticket))
-            }.addOnFailureListener {
-                continuation.resume(ResultFbState.Error(it, it.message))
-            }
+            db.collection(ticketColl).document(ticket.id)
+                .set(dataTicket)
+                .addOnFailureListener {
+                    continuation.resume(ResultFbState.Error(it, it.message))
+                }.addOnCompleteListener {
+                    continuation.resume(ResultFbState.Success.InsertTicket(ticket))
+                }
         }
 
     override suspend fun getTickets(sortBy: String, filter: TicketFiler?): ResultFbState =
