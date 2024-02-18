@@ -11,5 +11,7 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         SawitProApplication.appComponent.inject(this)
         super.onCreate(savedInstanceState)
+        startActivity(posNavigation.goToActionName(posNavigation.openXweighbridgeListOfTicketActivity))
+        finish()
     }
 }

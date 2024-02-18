@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginVertical="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_7sdp" >
+
+        <TextView
+            android:id="@+id/txtDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toStartOf="@id/txtLicenseNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="22 Jan By Ntr"/>
+
+        <TextView
+            android:id="@+id/txtLicenseNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:text="Halo Halo Bandung panjang jadinya gimana yaaa hao"
+            android:textColor="#000000"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toTopOf="@id/txtDriverName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDateTime" />
+
+        <TextView
+            android:id="@+id/txtDriverName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="2.00"
+            android:textColor="#000000"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toStartOf="@id/txtNetWeight"
+            app:layout_constraintStart_toStartOf="@id/txtLicenseNumber"
+            app:layout_constraintTop_toBottomOf="@id/txtLicenseNumber" />
+
+        <TextView
+            android:id="@+id/txtNetWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="4dp"
+            android:text="2.00"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@id/txtDriverName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtDriverName"
+            app:layout_constraintTop_toTopOf="@id/txtDriverName" />
+
+        <TextView
+            android:id="@+id/btnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VIEW"
+            android:padding="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_7sdp"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtNetWeight"
+            app:layout_constraintEnd_toStartOf="@id/btnEdit"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDIT"
+            android:padding="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_7sdp"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/btnView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnView"
+            app:layout_constraintBottom_toBottomOf="@id/btnView"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
