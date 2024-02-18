@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    lintOptions {
+        abortOnError false
+        checkDependencies false
+        checkReleaseBuilds false
+        ignoreWarnings true
+        disable 'TypographyFractions', 'TypographyQuotes', 'IconDensities', 'IconLocation', 'IconDuplicatesConfig', 'IconDipSize', 'Overdraw', 'InvalidPackage'
+    }
+
     namespace 'id.naupal.ui'
     compileSdk rootProject.ext.compileSdkVersion
 

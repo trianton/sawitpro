@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.naupal.firebase.model.TicketFiler
 import id.naupal.xweighbridge.model.UiState
-import id.naupal.xweighbridge.usecase.GetTicketsUseCaseImpl
+import id.naupal.xweighbridge.usecase.GetTicketsUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ListOfTicketViewModel @Inject constructor(
-    private val getTicketsUseCaseImpl: GetTicketsUseCaseImpl
+    private val getTicketsUseCase: GetTicketsUseCase
 ) : ViewModel() {
 
     private val _getTicketsState = MutableLiveData<UiState>()
@@ -22,7 +22,7 @@ class ListOfTicketViewModel @Inject constructor(
 
         _getTicketsState.value = UiState.Loading()
 
-        val response = getTicketsUseCaseImpl(sortBy, filter)
+        val response = getTicketsUseCase(sortBy, filter)
         _getTicketsState.value = response
     }
 }

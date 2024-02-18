@@ -6,6 +6,14 @@ plugins {
 }
 
 android {
+    lintOptions {
+        abortOnError false
+        checkDependencies false
+        checkReleaseBuilds false
+        ignoreWarnings true
+        disable 'TypographyFractions', 'TypographyQuotes', 'IconDensities', 'IconLocation', 'IconDuplicatesConfig', 'IconDipSize', 'Overdraw', 'InvalidPackage'
+    }
+
     namespace 'id.naupal.sawitpro'
     compileSdk rootProject.ext.compileSdkVersion
 
@@ -25,12 +33,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17

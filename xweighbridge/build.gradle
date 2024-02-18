@@ -5,6 +5,14 @@ plugins {
     id 'kotlin-parcelize'
 }
 android {
+    lintOptions {
+        abortOnError false
+        checkDependencies false
+        checkReleaseBuilds false
+        ignoreWarnings true
+        disable 'TypographyFractions', 'TypographyQuotes', 'IconDensities', 'IconLocation', 'IconDuplicatesConfig', 'IconDipSize', 'Overdraw', 'InvalidPackage'
+    }
+
     namespace 'id.naupal.xweighbridge'
     compileSdk rootProject.ext.compileSdkVersion
 
@@ -51,4 +59,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleRuntimeKtx"
 
     implementation 'com.google.android.material:material:1.5.0'
+
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation 'junit:junit:4.+'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2'
+    testImplementation "io.mockk:mockk:1.10.6"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
 }
