@@ -83,7 +83,7 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
             toolbarSync.setImageResource(uiR.drawable.ic_baseline_sort_24)
 
             toolbarSync.setOnClickListener {
-                showRadioConfirmationDialog()
+                showSortDialog()
             }
             toolbarFilter.setOnClickListener {
                 FilterTicketBsf.newInstance(activeFilter, ::handleFilterPicker)
@@ -93,6 +93,7 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
     }
 
     private fun handleFilterPicker(filter: TicketFiler?) {
+        selectedSortIndex = 0
         activeFilter = filter
         triggerGetData()
     }
@@ -112,8 +113,10 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
             }
 
             is UiState.Error -> {
-                Toast.makeText(this,
-                    getString(R.string.error_with_msg, uiState.error), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    getString(R.string.error_with_msg, uiState.error), Toast.LENGTH_SHORT
+                ).show()
             }
 
             is UiState.Success.GetTickets -> {
@@ -126,11 +129,12 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
         }
     }
 
-    private fun showRadioConfirmationDialog() {
+    private fun showSortDialog() {
         MaterialAlertDialogBuilder(this)
             .setTitle(getString(R.string.sort_by))
             .setSingleChoiceItems(sortByLabel, selectedSortIndex) { dialog, which ->
                 if (which != selectedSortIndex) {
+                    activeFilter = null
                     selectedSortIndex = which
                     triggerGetData()
                 }
