@@ -12,6 +12,8 @@ const val EEE_dd_MMM_yyyy_DATE_FORMAT = "EEEE, d MMM yyyy HH:mm"//Senin, 4 Feb 2
 const val SIMPLE_DATE_TIME_MILLI = "dd-MM-yyyy, HH:mm:ss"
 const val YYYY_MM_DD_DATE_FORMAT = "yyyy-MM-dd"
 
+const val MILL_SEC_IN_ONE_DAY = 86399999
+
 private fun generateSimpleDateFormatIndonesia(format: String): SimpleDateFormat {
     val id = Locale("in", "ID")
     return SimpleDateFormat(format, id)
@@ -67,12 +69,12 @@ fun getMilSecFromReadableTime(dateTime: String, format: String): Long {
     return try {
         val sourceFormat: SimpleDateFormat = generateSimpleDateFormatIndonesia(format)
         sourceFormat.parse(dateTime)?.time ?: 0
-    }catch (ex: Exception){
+    } catch (ex: Exception) {
         0
     }
 }
 
-fun getMilSecFromSimpleFormat(dateTime: String):Long{
+fun getMilSecFromSimpleFormat(dateTime: String): Long {
     return getMilSecFromReadableTime(dateTime, SIMPLE_DATE_TIME_MILLI)
 }
 

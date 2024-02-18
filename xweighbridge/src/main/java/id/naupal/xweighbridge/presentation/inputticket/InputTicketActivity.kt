@@ -17,6 +17,7 @@ import id.naupal.utils.extension.observe
 import id.naupal.utils.generateUuid
 import id.naupal.utils.getMilSecFromSimpleFormat
 import id.naupal.utils.getReadableDateTime
+import id.naupal.xweighbridge.R
 import id.naupal.ui.R as uiR
 import id.naupal.xweighbridge.databinding.XweighbridgeActivityInputTicketBinding
 import id.naupal.xweighbridge.di.WeighbridgeComponentFactory
@@ -105,8 +106,8 @@ class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTic
         with(toolbarBinding) {
             toolbarSync.visibility = View.GONE
             toolbarFilter.visibility = View.GONE
-            toolbarTxtTitle.text = if (activeTicket == null) "Create Ticket" else {
-                if (isEdit) "Edit Ticket" else "View Ticket"
+            toolbarTxtTitle.text = if (activeTicket == null) getString(R.string.create_ticket) else {
+                if (isEdit) getString(R.string.edit_ticket) else getString(R.string.view_ticket)
             }
             toolbarImgHome.setImageResource(uiR.drawable.ic_arrow_back_24)
             toolbarImgHome.setOnClickListener { finishAndRemoveTask() }
@@ -141,19 +142,19 @@ class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTic
     private fun handleInsertTicketState(uiState: UiState) {
         when (uiState) {
             is UiState.Loading -> {
-                Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_SHORT).show()
             }
 
             is UiState.Error -> {
-                Toast.makeText(this, "Error ${uiState.error}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error, uiState.error), Toast.LENGTH_SHORT).show()
             }
 
             is UiState.Success.InputTicket -> {
-                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.success), Toast.LENGTH_SHORT).show()
             }
 
             else -> {
-                Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -195,7 +196,7 @@ class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTic
             } else 0
 
         if (inbound <= outbound) {
-            binding.etOutboundWeight.error = "Outbound must less then inbound"
+            binding.etOutboundWeight.error = getString(R.string.outbound_must_less_then_inbound)
             binding.etNetWeight.setText("")
         } else {
             binding.etNetWeight.setText("${(inbound - outbound)}")
@@ -208,7 +209,8 @@ class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTic
         val licenceNumber = binding.etLicenseNumber.text.toString()
 
         if (!(licenceNumber.matches(Regex("^[A-z]{1,2}\\s{1}\\d{1,4}\\s{1}[A-z]{1,3}\$")))) {
-            binding.etLicenseNumber.error = "License Number is Not Valid Ex: BG 1234 CD"
+            binding.etLicenseNumber.error =
+                getString(R.string.license_number_is_not_valid_ex_bg_1234_cd)
         }
         checkIsAllInputValid()
     }

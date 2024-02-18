@@ -7,13 +7,14 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import id.naupal.ui.R
+import id.naupal.ui.R as uiR
 import id.naupal.firebase.model.TicketFiler
 import id.naupal.firebase.repo.FirestoreRepoImpl
 import id.naupal.navigation.Navigation
 import id.naupal.ui.BaseViewBindingActivity
 import id.naupal.ui.databinding.LayoutToolbarBinding
 import id.naupal.utils.extension.observe
+import id.naupal.xweighbridge.R
 import id.naupal.xweighbridge.databinding.XweighbridgeActivityListOfTicketBinding
 import id.naupal.xweighbridge.di.WeighbridgeComponentFactory
 import id.naupal.xweighbridge.model.Ticket
@@ -77,21 +78,21 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
         with(toolbarBinding) {
             toolbarSync.visibility = View.VISIBLE
             toolbarFilter.visibility = View.VISIBLE
-            toolbarTxtTitle.text = "Weighbridge Tickets"
-            toolbarImgHome.setImageResource(R.drawable.ui_ic_home_24)
-            toolbarSync.setImageResource(R.drawable.baseline_sort_24)
+            toolbarTxtTitle.text = getString(id.naupal.xweighbridge.R.string.weighbridge_tickets)
+            toolbarImgHome.setImageResource(uiR.drawable.ui_ic_home_24)
+            toolbarSync.setImageResource(uiR.drawable.ic_baseline_sort_24)
             toolbarImgHome.setOnClickListener { finishAndRemoveTask() }
             toolbarSync.setOnClickListener {
                 showRadioConfirmationDialog()
             }
             toolbarFilter.setOnClickListener {
-                FilterTicketBsf.newInstance(activeFilter, ::handlePemilihanFilter)
+                FilterTicketBsf.newInstance(activeFilter, ::handleFilterPicker)
                     .show(supportFragmentManager, "BSF")
             }
         }
     }
 
-    private fun handlePemilihanFilter(filter: TicketFiler?) {
+    private fun handleFilterPicker(filter: TicketFiler?) {
         activeFilter = filter
         triggerGetData()
     }
@@ -107,11 +108,12 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
     private fun handleInsertTicketState(uiState: UiState) {
         when (uiState) {
             is UiState.Loading -> {
-                Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_SHORT).show()
             }
 
             is UiState.Error -> {
-                Toast.makeText(this, "Error ${uiState.error}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.error_with_msg, uiState.error), Toast.LENGTH_SHORT).show()
             }
 
             is UiState.Success.GetTickets -> {
@@ -119,14 +121,14 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
             }
 
             else -> {
-                Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun showRadioConfirmationDialog() {
         MaterialAlertDialogBuilder(this)
-            .setTitle("Sort by")
+            .setTitle(getString(R.string.sort_by))
             .setSingleChoiceItems(sortByLabel, selectedSortIndex) { dialog, which ->
                 if (which != selectedSortIndex) {
                     selectedSortIndex = which
@@ -134,7 +136,7 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
                 }
                 dialog.dismiss()
             }
-            .setNegativeButton("Cancel") { dialog, _ ->
+            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

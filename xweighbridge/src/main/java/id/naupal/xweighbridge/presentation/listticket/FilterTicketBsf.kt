@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Context
 import id.naupal.firebase.model.TicketFiler
 import id.naupal.ui.BaseBottomSheetDialogFragment
+import id.naupal.utils.MILL_SEC_IN_ONE_DAY
 import id.naupal.utils.getMilSecFromSimpleFormat
 import id.naupal.utils.getMilliSec
 import id.naupal.utils.getReadableDateTime
@@ -59,7 +60,7 @@ class FilterTicketBsf : BaseBottomSheetDialogFragment() {
 
             etEndDate.setOnClickListener {
                 datePicker(it.context) { millSec ->
-                    etEndDate.setText(getReadableDateTime(millSec + 86399999))
+                    etEndDate.setText(getReadableDateTime(millSec + MILL_SEC_IN_ONE_DAY))
                 }
             }
             btnApply.setOnClickListener {
