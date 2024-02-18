@@ -1,0 +1,48 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        kotlin_version = '1.8.10'
+        navigation = "2.3.3"
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.1.4"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.8'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    versionMajor = 1
+    versionMinor = 0
+    versionPatch = 1
+
+    vCode = (versionMajor * 10000) + (versionMinor * 100) + (versionPatch)
+    vName = "${versionMajor}.${versionMinor}.${versionPatch}"
+
+    buildToolsVersion = "30.0.2"
+    compileSdkVersion = 33
+    minSdkVersion = 21
+    targetSdkVersion = 31
+
+    daggerVersion = "2.40"
+    androidxCoreCoreKtx = "1.7.0"
+    androidxAppcompatAppcompat = "1.4.1"
+    androidxConstraintLayout = "2.1.3"
+    androidxLifecycleViewmodelKtx = "2.5.1"
+    androidxLifecycleRuntimeKtx = "2.5.1"
+    androidxRoomCompiler = "2.5.2"
+
+    retrofit2Retrofit = "2.9.0"
+}
