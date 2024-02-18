@@ -11,3 +11,4 @@ rootProject.name = "SawitPro"
 include ':app'
 include ':firebase'
 include ':navigation'
+include ':utils'
