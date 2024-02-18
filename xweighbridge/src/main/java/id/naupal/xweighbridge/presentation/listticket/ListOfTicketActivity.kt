@@ -81,7 +81,7 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
             toolbarTxtTitle.text = getString(id.naupal.xweighbridge.R.string.weighbridge_tickets)
             toolbarImgHome.setImageResource(uiR.drawable.ui_ic_home_24)
             toolbarSync.setImageResource(uiR.drawable.ic_baseline_sort_24)
-            toolbarImgHome.setOnClickListener { finishAndRemoveTask() }
+
             toolbarSync.setOnClickListener {
                 showRadioConfirmationDialog()
             }
