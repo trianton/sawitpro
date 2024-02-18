@@ -1,5 +1,8 @@
 package id.naupal.xweighbridge.presentation.inputticket
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -10,12 +13,14 @@ import id.naupal.ui.databinding.LayoutToolbarBinding
 import id.naupal.utils.extension.observe
 import id.naupal.utils.generateUuid
 import id.naupal.utils.getMilSecFromSimpleFormat
+import id.naupal.utils.getMilliSec
 import id.naupal.utils.getReadableDateTime
 import id.naupal.ui.R as uiR
 import id.naupal.xweighbridge.databinding.XweighbridgeActivityInputTicketBinding
 import id.naupal.xweighbridge.di.WeighbridgeComponentFactory
 import id.naupal.xweighbridge.model.Ticket
 import id.naupal.xweighbridge.model.UiState
+import java.util.Calendar
 import javax.inject.Inject
 
 class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTicketBinding>() {
@@ -69,6 +74,12 @@ class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTic
                 )
                 inputTicketViewModel.insertTicket(tmpTicket)
             }
+
+            etDateTime.setOnClickListener {
+                datePicker(it.context) { millSec ->
+                    etDateTime.setText(getReadableDateTime(millSec))
+                }
+            }
         }
     }
 
@@ -116,5 +127,22 @@ class InputTicketActivity : BaseViewBindingActivity<XweighbridgeActivityInputTic
                 Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun datePicker(context: Context, onPick: (millSec: Long) -> Unit) {
+        val currentDateTime = Calendar.getInstance()
+        val startYear = currentDateTime.get(Calendar.YEAR)
+        val startMonth = currentDateTime.get(Calendar.MONTH)
+        val startDay = currentDateTime.get(Calendar.DAY_OF_MONTH)
+        val startHour = currentDateTime.get(Calendar.HOUR_OF_DAY)
+        val startMinute = currentDateTime.get(Calendar.MINUTE)
+
+        DatePickerDialog(context, { _, year, month, day ->
+            TimePickerDialog(context, { _, hour, minute ->
+                val pickedDateTime = Calendar.getInstance()
+                pickedDateTime.set(year, month, day, hour, minute)
+                onPick(pickedDateTime.timeInMillis)
+            }, startHour, startMinute, false).show()
+        }, startYear, startMonth, startDay).show()
     }
 }
