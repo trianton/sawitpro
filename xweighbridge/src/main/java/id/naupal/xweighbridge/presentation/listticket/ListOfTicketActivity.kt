@@ -18,6 +18,8 @@ import id.naupal.xweighbridge.databinding.XweighbridgeActivityListOfTicketBindin
 import id.naupal.xweighbridge.di.WeighbridgeComponentFactory
 import id.naupal.xweighbridge.model.Ticket
 import id.naupal.xweighbridge.model.UiState
+import id.naupal.xweighbridge.presentation.inputticket.InputTicketActivity.Companion.PARAM_IS_EDIT
+import id.naupal.xweighbridge.presentation.inputticket.InputTicketActivity.Companion.PARAM_TICKET
 import javax.inject.Inject
 
 class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfTicketBinding>() {
@@ -140,15 +142,15 @@ class ListOfTicketActivity : BaseViewBindingActivity<XweighbridgeActivityListOfT
 
     private fun onItemClick(ticket: Ticket) {
         navigation.goToActionName(navigation.openXweighbridgeInputTicketActivity).apply {
-            putExtra("PARAM_TICKET", ticket)
+            putExtra(PARAM_TICKET, ticket)
             resultInputLauncher.launch(this)
         }
     }
 
     private fun onItemEdited(ticket: Ticket) {
         navigation.goToActionName(navigation.openXweighbridgeInputTicketActivity).apply {
-            putExtra("PARAM_TICKET", ticket)
-            putExtra("PARAM_IS_EDIT", true)
+            putExtra(PARAM_TICKET, ticket)
+            putExtra(PARAM_IS_EDIT, true)
             resultInputLauncher.launch(this)
         }
     }

@@ -4,6 +4,7 @@ import dagger.Component
 import id.naupal.firebase.di.FirebaseComponent
 import id.naupal.sawitpro.di.AppComponent
 import id.naupal.sawitpro.di.FeatureScope
+import id.naupal.xweighbridge.presentation.inputticket.InputTicketActivity
 import id.naupal.xweighbridge.presentation.listticket.ListOfTicketActivity
 
 @FeatureScope
@@ -28,4 +29,5 @@ interface WeighbridgeComponent {
     }
 
     fun inject(activity: ListOfTicketActivity)
+    fun inject(activity: InputTicketActivity)
 }

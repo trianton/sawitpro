@@ -24,5 +24,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".presentation.inputticket.InputTicketActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:theme="@style/Pos.NoActionBar">
+            <intent-filter>
+                <action android:name="open.xweighbridge.InputTicketActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import id.naupal.utils.dagger.ViewModelFactory
 import id.naupal.utils.dagger.ViewModelKey
+import id.naupal.xweighbridge.presentation.inputticket.InputTicketViewModel
 import id.naupal.xweighbridge.presentation.listticket.ListOfTicketViewModel
 
 /**
@@ -23,4 +24,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ListOfTicketViewModel::class)
     internal abstract fun bindListOfTicketViewModel(viewModel: ListOfTicketViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(InputTicketViewModel::class)
+    internal abstract fun bindInputTicketViewModel(viewModel: InputTicketViewModel): ViewModel
 }
