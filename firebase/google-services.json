@@ -26,6 +26,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:674674190148:android:1ac36355d2cc2de781d911",
+        "android_client_info": {
+          "package_name": "id.naupal.playground"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG1p0Lh1MGlt6b3TrXD4es143v08hLAKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:674674190148:android:4cc4309d64aa583481d911",
         "android_client_info": {
           "package_name": "id.naupal.sawitpro"

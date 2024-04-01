@@ -2,8 +2,8 @@ package id.naupal.xweighbridge.di
 
 import dagger.Component
 import id.naupal.firebase.di.FirebaseComponent
-import id.naupal.sawitpro.di.AppComponent
-import id.naupal.sawitpro.di.FeatureScope
+import id.naupal.playground.di.AppComponent
+import id.naupal.playground.di.FeatureScope
 import id.naupal.xweighbridge.presentation.inputticket.InputTicketActivity
 import id.naupal.xweighbridge.presentation.listticket.ListOfTicketActivity
 

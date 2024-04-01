@@ -1,9 +1,9 @@
-package id.naupal.sawitpro.di
+package id.naupal.playground.di
 
 import dagger.Component
 import id.naupal.navigation.Navigation
 import id.naupal.navigation.di.NavComponent
-import id.naupal.sawitpro.MainActivity
+import id.naupal.playground.MainActivity
 import javax.inject.Singleton
 
 /**

@@ -1,4 +1,4 @@
-package id.naupal.sawitpro.di
+package id.naupal.playground.di
 
 import javax.inject.Scope
 

@@ -1,11 +1,11 @@
-package id.naupal.sawitpro
+package id.naupal.playground
 
 import android.app.Application
 import id.naupal.navigation.di.NavComponentFactory
-import id.naupal.sawitpro.di.AppComponent
-import id.naupal.sawitpro.di.DaggerAppComponent
+import id.naupal.playground.di.AppComponent
+import id.naupal.playground.di.DaggerAppComponent
 
-class SawitProApplication : Application() {
+class PlaygorundApp : Application() {
 
     companion object {
         lateinit var appComponent: AppComponent

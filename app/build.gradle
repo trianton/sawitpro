@@ -14,17 +14,20 @@ android {
         disable 'TypographyFractions', 'TypographyQuotes', 'IconDensities', 'IconLocation', 'IconDuplicatesConfig', 'IconDipSize', 'Overdraw', 'InvalidPackage'
     }
 
-    namespace 'id.naupal.sawitpro'
+    namespace 'id.naupal.playground'
     compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "id.naupal.sawitpro"
+        applicationId "id.naupal.playground"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.vCode
         versionName rootProject.ext.vName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {
@@ -32,6 +35,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildFeatures{
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.4"
     }
 
     compileOptions {
@@ -42,12 +53,30 @@ android {
         jvmTarget = '17'
     }
     dynamicFeatures = [':xweighbridge']
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
 }
 
 dependencies {
     implementation project(":ui")
     implementation project(":navigation")
     implementation project(":utils")
+
+    implementation "androidx.compose.material:material:1.3.0-rc01"
+    implementation "androidx.compose.compiler:compiler:1.4.4"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.3.0-rc01"
+    implementation 'androidx.activity:activity-compose:1.6.0'
+    implementation platform('androidx.compose:compose-bom:2023.03.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.material3:material3'
+
+    androidTestImplementation platform('androidx.compose:compose-bom:2023.03.00')
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
+    debugImplementation "androidx.compose.ui:ui-tooling:1.3.0-rc01"
 
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.2.2"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72"
@@ -62,6 +91,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleRuntimeKtx"
 
     implementation "com.google.dagger:dagger:$daggerVersion"
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
     kapt "androidx.room:room-compiler:$androidxRoomCompiler"

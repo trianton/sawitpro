@@ -7,7 +7,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SawitPro"
+rootProject.name = "playground"
 include ':app'
 include ':firebase'
 include ':navigation'
