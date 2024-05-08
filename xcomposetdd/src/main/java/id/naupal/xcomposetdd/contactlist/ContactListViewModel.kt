@@ -22,6 +22,8 @@ class ContactListViewModel(val contactRepository: ContactRepository) : ViewModel
             contactRepository.getContacts()
         }.onSuccess {
             _uiState.update { it.copy(isLoading = false) }
+        }.onFailure {
+            _uiState.update { it.copy(isLoading = false) }
         }
     }
 

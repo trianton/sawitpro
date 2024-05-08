@@ -79,13 +79,16 @@ class ContactListViewModelTest {
     @Test
     fun `test that loading indicator visibility state is false when fetch contacts returns error`() =
         runTest {
+            Mockito.`when`(contactsRepository.getContacts()).thenThrow(RuntimeException())
+
+            // Act
+            initTestClass()
 
             // Assert
             underTest.uiState.test {
                 val state = awaitItem()
                 Truth.assertThat(state.isLoading).isFalse()
             }
-
         }
 
     @Test
