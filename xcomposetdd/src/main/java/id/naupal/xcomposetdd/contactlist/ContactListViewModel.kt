@@ -5,6 +5,7 @@ import id.naupal.xcomposetdd.model.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class ContactListViewModel : ViewModel() {
@@ -12,6 +13,7 @@ class ContactListViewModel : ViewModel() {
     val uiState = _uiState.asStateFlow()
 
     init {
+        _uiState.update { it.copy(isLoading = true) }
         fetchContacts()
     }
 
