@@ -56,19 +56,45 @@ class ContactListViewModelTest {
     @Test
     fun `test that loading indicator visibility state is false when fetch contacts finished successful`() =
         runTest {
+
+            // Assert
+            underTest.uiState.test {
+                val state = awaitItem()
+                Truth.assertThat(state.isLoading).isFalse()
+            }
         }
 
     @Test
     fun `test that loading indicator visibility state is false when fetch contacts returns error`() =
         runTest {
+
+            // Assert
+            underTest.uiState.test {
+                val state = awaitItem()
+                Truth.assertThat(state.isLoading).isFalse()
+            }
+
         }
 
     @Test
     fun `test that contacts data should be updated when fetch contacts successful`() = runTest {
+
+        // Assert
+        underTest.uiState.test {
+            val state = awaitItem()
+            Truth.assertThat(state.isLoading).isFalse()
+            Truth.assertThat(state.contacts).isNotEmpty()
+        }
     }
 
     @Test
     fun `test that error layout visibility is true when fetch contacts throws error`() = runTest {
+
+        // Assert
+        underTest.uiState.test {
+            val state = awaitItem()
+            Truth.assertThat(state.isError).isTrue()
+        }
     }
 
 }
