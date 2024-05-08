@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class ContactListViewModel : ViewModel() {
+class ContactListViewModel(val contactRepository: ContactRepository) : ViewModel() {
     private val _uiState = MutableStateFlow(UiState())
     val uiState = _uiState.asStateFlow()
 
@@ -18,7 +18,11 @@ class ContactListViewModel : ViewModel() {
     }
 
     private fun fetchContacts() = viewModelScope.launch {
-        //todo
+        runCatching {
+            contactRepository.getContacts()
+        }.onSuccess {
+            _uiState.update { it.copy(isLoading = false) }
+        }
     }
 
 }

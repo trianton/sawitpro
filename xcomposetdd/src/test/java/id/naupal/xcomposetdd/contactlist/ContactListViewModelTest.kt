@@ -2,6 +2,7 @@ package id.naupal.xcomposetdd.contactlist
 
 import app.cash.turbine.test
 import com.google.common.truth.Truth
+import id.naupal.xcomposetdd.model.Contact
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -13,10 +14,16 @@ import org.junit.Test
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.TestInstance
+import org.mockito.Mockito
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.reset
+import retrofit2.Response
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ContactListViewModelTest {
+    private val contactsRepository: ContactRepository = mock()
+
     private lateinit var underTest: ContactListViewModel
 
     @Before
@@ -31,11 +38,11 @@ class ContactListViewModelTest {
 
     @BeforeEach
     fun setup() {
-        underTest = ContactListViewModel()
+        reset(contactsRepository)
     }
 
     private fun initTestClass() {
-        underTest = ContactListViewModel()
+        underTest = ContactListViewModel(contactsRepository)
     }
 
     @Test
@@ -56,6 +63,11 @@ class ContactListViewModelTest {
     @Test
     fun `test that loading indicator visibility state is false when fetch contacts finished successful`() =
         runTest {
+            val contacts: List<Contact> = mock()
+            Mockito.`when`(contactsRepository.getContacts()).thenReturn(Response.success(contacts))
+
+            // Act
+            initTestClass()
 
             // Assert
             underTest.uiState.test {
