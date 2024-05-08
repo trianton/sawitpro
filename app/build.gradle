@@ -52,7 +52,7 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    dynamicFeatures = [':xweighbridge', ':xcoroutine']
+    dynamicFeatures = [/*':xweighbridge', */':xcoroutine', ':xcomposetdd']
     packaging {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
