@@ -12,7 +12,11 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import junit.framework.TestCase
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -75,5 +79,24 @@ class ListOfTicketViewModelTest {
             Mockito.verify(getTicketsStateObserver, Mockito.times(2)).onChanged(capture())
             TestCase.assertEquals(UiState.Error(error = "error!!"), captor.value)
         }
+    }
+
+    @Test
+    fun when_collected_flow_multiple_time_then_return_same_values() = runBlocking {
+        val coldStream = flow {
+            for (i in 1..5) {
+                delay(100L)
+                emit(i)
+            }
+        }
+        val collect1 = buildString {
+            coldStream.collect { append(it).append(", ") }
+        }.removeSuffix(", ")
+        val collect2 = buildString {
+            coldStream.collect { append(it).append(", ") }
+        }.removeSuffix(", ")
+
+        assertEquals("1, 2, 3, 4, 5", collect1)
+        assertEquals("1, 2, 3, 4, 5", collect2)
     }
 }
