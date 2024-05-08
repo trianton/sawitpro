@@ -1,4 +1,7 @@
 package id.naupal.xcomposetdd.model
 
-class UiState {
-}
+data class UiState(
+    val isLoading: Boolean = false,
+    val isError: Boolean = false,
+    val contacts: List<Contact> = emptyList()
+);

@@ -1,15 +1,74 @@
 package id.naupal.xcomposetdd.contactlist
 
+import app.cash.turbine.test
+import com.google.common.truth.Truth
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.test.setMain
+import org.junit.Before
+import org.junit.Test
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.TestInstance
+
+@OptIn(ExperimentalCoroutinesApi::class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ContactListViewModelTest {
+    private lateinit var underTest: ContactListViewModel
 
-    fun `test that loading indicator visibility state is true when ViewModel first load`() {}
+    @Before
+    fun init() {
+        Dispatchers.setMain(UnconfinedTestDispatcher())
+    }
 
-    fun `test that loading indicator visibility state is false when fetch contacts finished successful`() {}
+    @AfterAll
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
 
-    fun `test that loading indicator visibility state is false when fetch contacts returns error`() {}
+    @BeforeEach
+    fun setup() {
+        underTest = ContactListViewModel()
+    }
 
-    fun `test that contacts data should be updated when fetch contacts successful`() {}
+    private fun initTestClass() {
+        underTest = ContactListViewModel()
+    }
 
-    fun `test that error layout visibility is true when fetch contacts throws error`() {}
+    @Test
+    fun `test that loading indicator visibility state is true when ViewModel first load`() =
+        runTest {
+            // Arrange
+
+            // Act
+            initTestClass()
+
+            // Assert
+            underTest.uiState.test {
+                val state = awaitItem()
+                Truth.assertThat(state.isLoading).isTrue()
+            }
+        }
+
+    @Test
+    fun `test that loading indicator visibility state is false when fetch contacts finished successful`() =
+        runTest {
+        }
+
+    @Test
+    fun `test that loading indicator visibility state is false when fetch contacts returns error`() =
+        runTest {
+        }
+
+    @Test
+    fun `test that contacts data should be updated when fetch contacts successful`() = runTest {
+    }
+
+    @Test
+    fun `test that error layout visibility is true when fetch contacts throws error`() = runTest {
+    }
 
 }
