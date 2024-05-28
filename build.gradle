@@ -32,9 +32,9 @@ ext {
     vName = "${versionMajor}.${versionMinor}.${versionPatch}"
 
     buildToolsVersion = "30.0.2"
-    compileSdkVersion = 33
+    compileSdkVersion = 34
     minSdkVersion = 21
-    targetSdkVersion = 31
+    targetSdkVersion = 33
 
     daggerVersion = "2.40"
     androidxCoreCoreKtx = "1.7.0"

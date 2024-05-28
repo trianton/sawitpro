@@ -13,6 +13,10 @@ include ':firebase'
 include ':navigation'
 include ':utils'
 include ':ui'
-include ':xweighbridge'
-include ':xcoroutine'
-include ':xcomposetdd'
+include ':network'
+
+//include ':xweighbridge'
+//include ':xcoroutine'
+//include ':xcomposetdd'
+
+include ':news-api'

@@ -45,12 +45,11 @@ dependencies {
     implementation project(":ui")
     implementation project(":navigation")
     implementation project(":firebase")
+    implementation project(path: ':utils')
 
     implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation project(path: ':utils')
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0"
-
 
     implementation "androidx.core:core-ktx:$androidxCoreCoreKtx"
     implementation "androidx.appcompat:appcompat:$androidxAppcompatAppcompat"

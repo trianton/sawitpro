@@ -1,0 +1,18 @@
+package id.naupal.network
+
+object NetworkCode {
+    val TOO_MANY_REQUESTS = 400..499
+}
+
+object DaggerNamed {
+    const val PLAIN_OKHTTP = "PLAIN_OKHTTP"
+    const val LOGGED_IN_OKHTTP = "LOGGED_IN_OKHTTP"
+    const val LOGGED_IN_OKHTTP_TIMEOUT_LONGER = "OKHTTP_TIMEOUT_LONGER"
+    const val OKHTTP_WEBSOCKET = "OKHTTP_WEBSOCKET"
+
+    const val RETROFIT_CHAT = "RETROFIT_CHAT"
+    const val RETROFIT_CONTENT = "RETROFIT_CONTENT"
+    const val RETROFIT_TILE_SEGMENT = "RETROFIT_TILE_SEGMENT"
+    const val RETROFIT_CATALOG_SHARE = "RETROFIT_CATALOG_SHARE"
+    const val RETROFIT_CATALOG = "RETROFIT_CATALOG"
+}
