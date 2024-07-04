@@ -44,8 +44,8 @@ dependencies {
     implementation project(":app")
     implementation project(":ui")
     implementation project(":navigation")
+    implementation project(":utils")
     implementation project(":firebase")
-    implementation project(path: ':utils')
 
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"

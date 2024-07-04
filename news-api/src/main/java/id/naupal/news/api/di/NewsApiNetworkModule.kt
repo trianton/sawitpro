@@ -11,15 +11,13 @@ import javax.inject.Named
 @Module
 object NewsApiNetworkModule {
 
-    private const val SOCIAL_RETROFIT_CLIENT = "SOCIAL_RETROFIT_CLIENT"
-
     @NewsApiScope
     @Provides
     fun provideRetrofitClient(
         @Named(DaggerNamed.PLAIN_OKHTTP) okHttpClient: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("baseUrl")
+            .baseUrl("https://saurav.tech/")
             .client(okHttpClient)
             .build()
     }

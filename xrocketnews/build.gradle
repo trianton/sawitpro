@@ -1,13 +1,23 @@
 plugins {
     id 'com.android.dynamic-feature'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 android {
+    lintOptions {
+        abortOnError false
+        checkDependencies false
+        checkReleaseBuilds false
+        ignoreWarnings true
+        disable 'TypographyFractions', 'TypographyQuotes', 'IconDensities', 'IconLocation', 'IconDuplicatesConfig', 'IconDipSize', 'Overdraw', 'InvalidPackage'
+    }
+
     namespace 'com.bolicstudio.xrocketnews'
-    compileSdk 34
+    compileSdk rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdk 21
+        minSdk rootProject.ext.minSdkVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -17,12 +27,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
     implementation project(":app")
-    implementation 'androidx.core:core-ktx:1.13.1'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    implementation project(":ui")
+    implementation project(":navigation")
+    implementation project(":utils")
+    implementation project(":news-api")
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0"
+
+    implementation "androidx.core:core-ktx:$androidxCoreCoreKtx"
+    implementation "androidx.appcompat:appcompat:$androidxAppcompatAppcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$androidxConstraintLayout"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$androidxLifecycleViewmodelKtx"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$androidxLifecycleRuntimeKtx"
 }
