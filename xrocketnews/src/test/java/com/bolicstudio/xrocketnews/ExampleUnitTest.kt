@@ -1,4 +1,4 @@
-package id.naupal.xcoroutine
+package com.bolicstudio.xrocketnews
 
 import org.junit.Test
 

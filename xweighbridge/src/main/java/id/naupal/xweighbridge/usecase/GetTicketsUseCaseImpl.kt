@@ -9,10 +9,6 @@ import id.naupal.xweighbridge.model.Ticket
 import id.naupal.xweighbridge.model.UiState
 import javax.inject.Inject
 
-/**
- * Created by Naupal T. on 14/11/22.
- */
-
 class GetTicketsUseCaseImpl @Inject constructor(
     private val firestoreRepo: FirestoreRepo,
     private val mapDtoToTicket: Mapper<TicketDto, Ticket>

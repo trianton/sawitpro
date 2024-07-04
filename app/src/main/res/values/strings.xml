@@ -4,4 +4,5 @@
     <string name="title_activity_main_cps">MainActivityCps</string>
     <string name="title_xcoroutine">Coroutine</string>
     <string name="title_xcomposetdd">Compose Tdd</string>
+    <string name="title_xrocketnews">xnews</string>
 </resources>

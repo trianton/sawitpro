@@ -15,8 +15,7 @@ include ':utils'
 include ':ui'
 include ':network'
 
-//include ':xweighbridge'
-//include ':xcoroutine'
-//include ':xcomposetdd'
+include ':xweighbridge'
 
 include ':news-api'
+include ':xrocketnews'

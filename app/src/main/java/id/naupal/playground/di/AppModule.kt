@@ -7,10 +7,6 @@ import dagger.Module
 import id.naupal.playground.PlaygorundApp
 import id.naupal.utils.dagger.ViewModelFactory
 
-/**
- * Created by Naupal T. on 06/05/22.
- */
-
 @Module
 abstract class AppModule {
 
