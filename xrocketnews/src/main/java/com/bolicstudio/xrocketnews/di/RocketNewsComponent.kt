@@ -11,6 +11,7 @@ import id.naupal.playground.di.FeatureScope
 @Component(
     modules = [
         ViewModelModule::class,
+        DomainModule::class
     ],
     dependencies = [
         AppComponent::class,

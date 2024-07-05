@@ -1,6 +1,5 @@
 package id.naupal.news.api.data.repository
 
-import android.util.Log
 import id.naupal.network.Mapper
 import id.naupal.network.ResourceState
 import id.naupal.network.safeApiCall
@@ -22,7 +21,6 @@ class NewsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getArticles(): ResourceState<List<Article>> {
-        Log.i("NTR-NewsRepositoryImpl", "getArticles")
         return safeApiCall(mapperArticle) { service.getArticles() }
     }
 }

@@ -45,6 +45,7 @@ dependencies {
     implementation project(":ui")
     implementation project(":navigation")
     implementation project(":utils")
+    implementation project(":network")
     implementation project(":news-api")
     implementation project(":localstorage")
 

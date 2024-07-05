@@ -2,6 +2,7 @@ package id.naupal.news.api.di
 
 import dagger.Component
 import id.naupal.network.di.NetworkComponent
+import id.naupal.news.api.data.repository.NewsRepository
 import id.naupal.news.api.domain.usecase.GetArticlesUseCase
 import id.naupal.news.api.domain.usecase.GetNewsUseCase
 
@@ -29,5 +30,7 @@ interface NewsApiComponent {
     fun provideGetNewsUseCase(): GetNewsUseCase
 
     fun provideGetArticlesUseCase(): GetArticlesUseCase
+
+    fun provideNewsRepository(): NewsRepository
 
 }
