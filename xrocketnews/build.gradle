@@ -46,6 +46,7 @@ dependencies {
     implementation project(":navigation")
     implementation project(":utils")
     implementation project(":news-api")
+    implementation project(":localstorage")
 
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"

@@ -19,3 +19,4 @@ include ':xweighbridge'
 
 include ':news-api'
 include ':xrocketnews'
+include ':localstorage'

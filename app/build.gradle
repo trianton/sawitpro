@@ -64,6 +64,7 @@ android {
 
 dependencies {
     implementation project(":ui")
+    implementation project(":localstorage")
     implementation project(":navigation")
     implementation project(":utils")
     implementation project(":network")
