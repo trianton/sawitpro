@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 class Navigation (private val context: Context) {
     val openXweighbridgeListOfTicketActivity = "open.xweighbridge.ListOfTicketActivity"
     val openXweighbridgeInputTicketActivity = "open.xweighbridge.InputTicketActivity"
+    val openXnewsrocketNewsListActivity = "open.xnewsrocket.NewsListActivity"
 
     fun goToActionName(actionName: String, keepBackStack: Boolean = true): Intent {
         return getIntent(actionName).apply {

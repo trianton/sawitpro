@@ -81,6 +81,7 @@ suspend fun <T : Any, R : Any> safeApiCall(
         )
 
     } catch (e: Exception) {
+        e.printStackTrace()
         return ResourceState.Failure(
             throwable = e,
             responseCode = responseCode,

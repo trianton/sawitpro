@@ -6,43 +6,43 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ArticleDto(
     @Json(name = "status")
-    val status: String = "",
+    val status: String? = "",
 
     @Json(name = "totalResults")
-    val totalResults: Int = 0,
+    val totalResults: Int? = 0,
 
     @Json(name = "articles")
-    val articles: List<Article> = emptyList(),
+    val articles: List<Article2>? = emptyList(),
 ) {
     @JsonClass(generateAdapter = true)
-    data class Article(
+    data class Article2(
         @Json(name = "source")
-        val source: Source? = null,
+        val source: Source2? = null,
 
         @Json(name = "author")
-        val author: String = "",
+        val author: String? = "",
 
         @Json(name = "title")
-        val title: String = "",
+        val title: String? = "",
 
         @Json(name = "description")
-        val description: String = "",
+        val description: String? = "",
 
         @Json(name = "url")
-        val url: String = "",
+        val url: String? = "",
 
         @Json(name = "urlToImage")
-        val urlToImage: String = "",
+        val urlToImage: String? = "",
 
         @Json(name = "publishedAt")
-        val publishedAt: String = "",
+        val publishedAt: String? = "",
 
         @Json(name = "content")
-        val content: String = "",
+        val content: String? = "",
     )
     @JsonClass(generateAdapter = true)
-    data class Source(
-        val id: String = "",
-        val name: String = "",
+    data class Source2(
+        val id: String? = "",
+        val name: String? = "",
     )
 }

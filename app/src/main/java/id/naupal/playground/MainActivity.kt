@@ -11,7 +11,7 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         PlaygorundApp.appComponent.inject(this)
         super.onCreate(savedInstanceState)
-        startActivity(posNavigation.goToActionName(posNavigation.openXweighbridgeListOfTicketActivity))
+        startActivity(posNavigation.goToActionName(posNavigation.openXnewsrocketNewsListActivity))
         finish()
     }
 }

@@ -6,6 +6,7 @@ import dagger.Provides
 import id.naupal.network.DaggerNamed.PLAIN_OKHTTP
 import id.naupal.network.HttpClientBuilderFactory
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Named
 
 @Module
@@ -18,7 +19,12 @@ class NetworkModule(
     @Named(PLAIN_OKHTTP)
     fun provideOkHttp(
     ): OkHttpClient {
-        return HttpClientBuilderFactory(context).create().build()
+        return HttpClientBuilderFactory(context).create()
+            .addInterceptor(HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BASIC
+            })
+            .build()
+
     }
 
 }

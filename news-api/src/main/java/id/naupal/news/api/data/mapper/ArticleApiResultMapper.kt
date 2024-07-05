@@ -8,15 +8,15 @@ import javax.inject.Inject
 
 class ArticleApiResultMapper @Inject constructor() : Mapper<@JvmSuppressWildcards ArticleDto, List<@JvmSuppressWildcards Article>> {
     override fun map(input: ArticleDto): List<Article> {
-        return input.articles.map {
+        return input.articles?.map {
             Article(
                 source = it.source?.name?:"-",
-                author = it.author,
-                description = it.description,
-                urlToImage = it.urlToImage,
-                publishedAt = it.publishedAt,
-                content = it.content
+                author = it.author?:"",
+                description = it.description?:"",
+                urlToImage = it.urlToImage?:"",
+                publishedAt = it.publishedAt?:"",
+                content = it.content?:""
             )
-        }
+        }?: emptyList()
     }
 }

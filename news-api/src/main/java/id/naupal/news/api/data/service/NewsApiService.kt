@@ -10,7 +10,7 @@ interface NewsApiService {
     @GET("rockets")
     suspend fun getNews(): Response<List<NewsDto>>
 
-    @GET("/NewsAPI/everything/cnn.json")
+    @GET("cnn.json")
     suspend fun getArticles(): Response<ArticleDto>
 
 }
